@@ -216,14 +216,14 @@ class VoodooRun(VoodooSub):
     def _set_local_dev_network(self):
         existing_network = False
         for network in client.networks.list():
-            if network.name == "inf":
+            if network.name == "vd":
                 existing_network = True
         if not existing_network:
             ipam_pool = docker.types.IPAMPool(subnet="172.42.0.0/16")
             ipam_config = docker.types.IPAMConfig(pool_configs=[ipam_pool])
-            logger.info("Create '.inf' network")
+            logger.info("Create '.vd' network")
             client.networks.create(
-                'inf',
+                'vd',
                 driver="bridge",
                 ipam=ipam_config)
         container = client.containers.list(
