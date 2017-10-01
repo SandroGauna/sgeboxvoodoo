@@ -1,7 +1,7 @@
 networks:
   default:
     external:
-      name: vd
+      name: inf
 services:
   py3ofusion:
     optional: Add py3o reports server
@@ -56,7 +56,7 @@ services:
     expose: 1080
     image: akretion/lightweight-mailcatcher
   odoo:
-    image: akretion/voodoo:latest
+    image: sgeboxvd:latest
     expose: 8069
     environment:
     - PYTHONDONTWRITEBYTECODE=True
