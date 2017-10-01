@@ -25,7 +25,7 @@ DEFAULT_CONF = {
     "shared_eggs": True,
     "shared_gems": True,
     "odoo": "https://github.com/oca/ocb.git",
-    "template": "https://github.com/akretion/voodoo-template.git",
+    "template": "https://github.com/SandroGauna/voodoo-template.git",
     "maintainer_quality_tools":
         "https://github.com/OCA/maintainer-quality-tools",
     "env": "dev",
@@ -216,14 +216,14 @@ class VoodooRun(VoodooSub):
     def _set_local_dev_network(self):
         existing_network = False
         for network in client.networks.list():
-            if network.name == "vd":
+            if network.name == "inf":
                 existing_network = True
         if not existing_network:
             ipam_pool = docker.types.IPAMPool(subnet="172.42.0.0/16")
             ipam_config = docker.types.IPAMConfig(pool_configs=[ipam_pool])
-            logger.info("Create '.vd' network")
+            logger.info("Create '.inf' network")
             client.networks.create(
-                'vd',
+                'inf',
                 driver="bridge",
                 ipam=ipam_config)
         container = client.containers.list(
@@ -240,7 +240,7 @@ class VoodooRun(VoodooSub):
                 "akretion/voodoo-proxy",
                 hostname="voodoo-proxy",
                 name="voodoo-proxy",
-                network_mode='vd',
+                network_mode='inf',
                 volumes=[
                     "/var/run/docker.sock:/tmp/docker.sock:ro",
                     "/etc/hosts:/app/hosts",
