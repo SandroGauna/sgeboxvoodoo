@@ -305,7 +305,7 @@ class VoodooMigrate(VoodooSub):
     """Migrate your odoo project
 
     First you need to checkout the voodoo-upgrade template
-    available here : https://github.com/akretion/voodoo-upgrade
+    available here : https://github.com/SandroGauna/voodoo-upgrade
     (It's a template a voodoo but based on open-upgrade'
 
     Then go inside the repository clonned and launch the migration
